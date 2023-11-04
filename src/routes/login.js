@@ -1,46 +1,30 @@
-import FootballImage from '../assets/images/login_img.png'
-import GoogleIcon from '../assets/images/google.png'
-import AppleIcon from '../assets/images/apple.png'
-import {NameForm, EmailForm, PasswordForm} from '../components/forms'
+import PlayerImage from '../assets/images/login_brasil.png'
+import { UsernameForm, PasswordForm } from '../components/login_forms';
 
 function Login() {
+    const screenStyle = {
+        "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)"
+    };
     return (
-        <div class="Login w-screen flex">
-            <div class="grow flex justify-center items-center">
-                <div class="w-112">
-                    <h1 class='mb-14 font-medium text-4xl'>Get Started Now</h1> 
-                    <NameForm />
-                    <EmailForm />
-                    <PasswordForm />
-                    <div class="flex items-star">
-                        <div class="flex items-center h-5 my-4">
-                            <input id="tos" type="checkbox" value="" class="w-3 h-3 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required/>
-                            <label for="tos" class="ml-2 text-xs font-medium text-gray-900">I agree to the <a href='#'><u>terms & policy</u></a></label>
-                        </div>
+        <div class="flex h-screen bg-gradient-to-br from-[#89AA28] from-25% to-[#DDFF00] to-75% w-full p-12" style={screenStyle}>
+            <div class="flex w-full justify-end items-center">
+                <div class="bg-white rounded-[2.5rem] m-20 py-28 px-20 w-[46rem] h-[56rem] shadow-inner">
+                    <h1 class="font-medium text-[2.5rem] pb-6">Log in</h1>
+                    <h2 class="text-[1.5rem]">Enter your account details</h2>
+                    <div className="my-24">
+                        <UsernameForm className="mb-10"/>
+                        <PasswordForm className="my-10"/>
+                        <label><a href='#'><u>forgot password?</u></a></label>
                     </div>
-                    <button type='submit' class="text-white text-sm font-bold bg-green-secondary border-2 border-green-tertiary rounded-xl w-full py-1.5">Signup</button>
-                    <div class="flex justify-center my-12 items-center">
-                        <hr class="bg-weak-grey h-0.5 border-none rounded-sm opacity-20 w-full z-0"/>
-                        <label class="px-1 text-xs z-0">Or</label>
-                        <hr class="bg-weak-grey h-0.5 border-none opacity-20 w-full z-0"/>
-                    </div>
-                    <div class="flex justify-around">
-                        <button type="button" class="border-2 border-weak-grey flex items-center px-4 rounded-xl z-10">
-                            <img src={GoogleIcon} class="w-6 my-1 mr-2"/>
-                            <label class="text-xs mr-2">Sign in with Google</label>
-                        </button>
-                        <button type="button" class="border-2 border-weak-grey flex items-center px-4 rounded-xl">
-                            <img src={AppleIcon} class="w-6 my-1 mr-2"/>
-                            <label class="text-xs mr-2">Sign in with Google</label>
-                        </button>
-                    </div>
-                    <p class="mt-4 text-sm text-center">Have an account? <a href='#' class="text-blue-link">Sign In</a></p>
-                    
+                    <button className="w-full h-auto p-[0.625rem] text-[1.3125rem] text-white font-bold my-4" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>Login</button>
+                    <label className='block text-center my-4'>Don't have an account? <a className="text-[#0F3DDE]" href='#'>Sign Up</a></label>
+                
                 </div>
             </div>
-            <div>
-                <img src={FootballImage} class="inline-flex grow justify-end h-screen "/>
+            <div class="flex w-full justify-start items-center">
+                <img class="h-[64rem] ml-20 flex-shrink-0" src={PlayerImage}/>
             </div>
+
         </div>
     )
 }

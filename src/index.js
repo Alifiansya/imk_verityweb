@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Signup from './routes/signup';
 import Login from './routes/login';
 import reportWebVitals from './reportWebVitals';
 
