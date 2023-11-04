@@ -3,12 +3,12 @@ import { UsernameForm, PasswordForm } from '../components/login_forms';
 
 function Login() {
     const screenStyle = {
-        "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)"
+        "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)",
     };
     return (
-        <div class="flex h-screen bg-gradient-to-br from-[#89AA28] from-25% to-[#DDFF00] to-75% w-full p-12" style={screenStyle}>
+        <div class="flex h-screen" style={screenStyle}>
             <div class="flex w-full justify-end items-center">
-                <div class="bg-white rounded-[2.5rem] m-20 py-28 px-20 w-[46rem] h-[56rem] shadow-inner">
+                <div class="bg-white rounded-[2.5rem] m-20 mr-[-4rem] py-28 px-20 w-[46rem] h-[56rem] shadow-inner scale-[67%]">
                     <h1 class="font-medium text-[2.5rem] pb-6">Log in</h1>
                     <h2 class="text-[1.5rem]">Enter your account details</h2>
                     <div className="my-24">
@@ -22,7 +22,7 @@ function Login() {
                 </div>
             </div>
             <div class="flex w-full justify-start items-center">
-                <img class="h-[64rem] ml-20 flex-shrink-0" src={PlayerImage}/>
+                <img class="h-[64rem] ml-[-4rem] flex-shrink-0 scale-[67%]" src={PlayerImage}/>
             </div>
 
         </div>
