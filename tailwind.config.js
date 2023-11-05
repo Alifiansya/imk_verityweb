@@ -15,6 +15,7 @@ module.exports = {
       }
     },
     colors: {
+      "transparent": "transparent",
       "white": "#FFFFFF",
       "blue-link": "#0F3DDE",
       "green-primary": "#FCFFEE",
@@ -22,7 +23,7 @@ module.exports = {
       "green-tertiary": "#3A5B22",
       "weak-grey": "#D9D9D9",
       "white": "#FFFFFF"
-    }
+    },
   },
   plugins: [],
 }

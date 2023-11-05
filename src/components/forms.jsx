@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import EyeOff from '../assets/images/EyeOff.svg'
+import EyeOn from '../assets/images/EyeOn.svg'
+
 function NameForm() {
     return (
         <div class="mb-4">
@@ -17,10 +21,17 @@ function EmailForm() {
 }
 
 function PasswordForm(){
+    const [isVisible, setVisibility] = useState(false);
+    const handleVisibility = () => {
+        setVisibility(!isVisible);
+    };
     return (
         <div class="mt-4">
             <label for="password" class="block text-sm font-medium mb-1">Your password</label>
-            <input type="password" id="password" class="bg-white border border-weak-grey rounded-[0.625rem] text-xs placeholder-weak-grey block w-full p-2.5" placeholder="Enter Password" required></input>
+            <div className="border border-weak-grey rounded-[0.625rem] flex">
+                <input type={isVisible ? "text" : "password"} id="password" class="bg-transparent rounded-[0.625rem] text-xs placeholder-weak-grey block w-full p-2.5 relative" placeholder="Enter Password" required></input>
+                <button class="z-10 relative m-2 opacity-30" onClick={handleVisibility}><img src={isVisible ? EyeOn : EyeOff}/></button>
+            </div>
         </div>
     )
 }
