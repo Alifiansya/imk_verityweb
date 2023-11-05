@@ -1,4 +1,4 @@
-import FootballImage from '../assets/images/login_img.png'
+import PialaImage from '../assets/images/signup_piala.png'
 import GoogleIcon from '../assets/images/google.png'
 import AppleIcon from '../assets/images/apple.png'
 import {NameForm, EmailForm, PasswordForm} from '../components/forms'
@@ -6,7 +6,7 @@ import {NameForm, EmailForm, PasswordForm} from '../components/forms'
 function Signup() {
     return (
         <div class="Login w-screen flex">
-            <div class="grow flex justify-center items-center">
+            <div class="grow flex justify-center items-center w-full">
                 <div class="w-112">
                     <h1 class='mb-14 font-medium text-4xl'>Get Started Now</h1> 
                     <NameForm />
@@ -18,7 +18,7 @@ function Signup() {
                             <label for="tos" class="ml-2 text-xs font-medium text-gray-900">I agree to the <a href='#'><u>terms & policy</u></a></label>
                         </div>
                     </div>
-                    <button type='submit' class="text-white text-sm font-bold bg-green-secondary border-2 border-green-tertiary rounded-xl w-full py-1.5">Signup</button>
+                    <button type='submit' class="text-white text-base font-bold w-full py-2" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>Signup</button>
                     <div class="flex justify-center my-12 items-center">
                         <hr class="bg-weak-grey h-0.5 border-none rounded-sm opacity-20 w-full z-0"/>
                         <label class="px-1 text-xs z-0">Or</label>
@@ -34,11 +34,12 @@ function Signup() {
                             <label class="text-xs mr-2">Sign in with Google</label>
                         </button>
                     </div>
-                    <p class="mt-4 text-sm text-center">Have an account? <a href='#' class="text-blue-link">Sign In</a></p>
+                    <p class="mt-4 text-sm text-center">Have an account? <a href='#' class="text-blue-link"><u>Sign In</u></a></p>
                 </div>
             </div>
-            <div class="w-6/12">
-                <img src={FootballImage} class="inline-flex grow justify-end h-screen w-screen"/>
+            <div class="flex flex-col w-full h-screen justify-center items-center" style={{"border-radius": "2.8125rem 0rem 0rem 2.8125rem", "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)"}}>
+                <h1 className="font-bold text-white text-3xl w-[32rem] text-center font-[Roboto] m-2">Be a champion with a strong body, healthy mind and maximum stamina</h1>
+                <img className="w-[32rem]" src={PialaImage} />
             </div>
         </div>
     )
