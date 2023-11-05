@@ -1,5 +1,6 @@
 import PlayerImage from '../assets/images/login_brasil.png'
 import { UsernameForm, PasswordForm } from '../components/login_forms';
+import { Link } from 'react-router-dom'
 
 function Login() {
     const screenStyle = {
@@ -17,7 +18,7 @@ function Login() {
                         <label><a href='#'><u>forgot password?</u></a></label>
                     </div>
                     <button className="w-full h-auto p-[0.625rem] text-[1.3125rem] text-white font-bold my-4" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>Login</button>
-                    <label className='block text-center my-4'>Don't have an account? <a className="text-[#0F3DDE]" href='#'>Sign Up</a></label>
+                    <label className='block text-center my-4'>Don't have an account? <Link className="text-[#0F3DDE]" to='/signup'>Sign Up</Link></label>
                 
                 </div>
             </div>
