@@ -6,6 +6,12 @@ function Login() {
     const screenStyle = {
         "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)",
     };
+    const handleLogin = () => {
+        const uname = document.getElementById("uname").value;
+        const password = document.getElementById("password").value;
+        console.log(uname);
+        console.log(password);
+    }
     return (
         <div class="flex h-screen" style={screenStyle}>
             <div class="flex w-full justify-end items-center">
@@ -17,7 +23,9 @@ function Login() {
                         <PasswordForm className="my-10"/>
                         <label><a href='#'><u>forgot password?</u></a></label>
                     </div>
-                    <button className="w-full h-auto p-[0.625rem] text-[1.3125rem] text-white font-bold my-4" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>Login</button>
+                    <div className="hover:brightness-75 relative z-0" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>
+                        <button className="w-full h-auto p-[0.625rem] text-[1.3125rem] text-white font-bold py-3 relative z-10" onClick={handleLogin} >Login</button>
+                    </div>
                     <label className='block text-center my-4'>Don't have an account? <Link className="text-[#0F3DDE]" to='/signup'>Sign Up</Link></label>
                 
                 </div>
