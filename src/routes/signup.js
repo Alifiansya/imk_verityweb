@@ -19,7 +19,7 @@ function Signup() {
                             <label for="tos" class="ml-2 text-xs font-medium text-gray-900">I agree to the <a href='#'><u>terms & policy</u></a></label>
                         </div>
                     </div>
-                    <button type='submit' class="text-white text-base font-bold w-full py-2.5" style={{"border-radius": "0.625rem", "background": "linear-gradient(180deg, #98A039 0.75%, #DF0 143.27%)"}}>Signup</button>
+                    <button type='submit' class="text-white text-base font-bold w-full py-2.5 hover:brightness-75" style={{"border-radius": "0.625rem", "background": "#4CAF50"}}>Signup</button>
                     <div class="flex justify-center my-12 items-center">
                         <hr class="bg-weak-grey h-0.5 border-none rounded-sm opacity-20 w-full z-0"/>
                         <label class="px-1 text-xs z-0">Or</label>

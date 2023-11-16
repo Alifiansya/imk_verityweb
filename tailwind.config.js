@@ -22,7 +22,9 @@ module.exports = {
       "green-secondary": "#98A039",
       "green-tertiary": "#3A5B22",
       "weak-grey": "#D9D9D9",
-      "white": "#FFFFFF"
+      "white": "#FFFFFF",
+      "red-500": "#ef4444",
+      "gray-100": "#f3f4f6"
     },
   },
   plugins: [],
