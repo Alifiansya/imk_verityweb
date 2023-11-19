@@ -5,6 +5,7 @@ import './index.css';
 import Signup from './routes/signup';
 import Login from './routes/login';
 import Home from './routes/home';
+import Test from './routes/test';
 import reportWebVitals from './reportWebVitals';
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/test" element={<Test />} />
        </Routes>
     </BrowserRouter>
   )

@@ -1,8 +1,9 @@
 import PlayerImage from '../assets/images/login_brasil.png'
 import { UsernameForm, PasswordForm } from '../components/login_forms';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
+    let navigate = useNavigate();
     const screenStyle = {
         "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)",
     };
@@ -11,6 +12,13 @@ function Login() {
         const password = document.getElementById("password").value;
         console.log(uname);
         console.log(password);
+        if(uname == "RealBarca" && password == "password123"){
+            alert("Login Success! Welcome RealBarca FC");
+            navigate("/home"); 
+        }
+        else {
+            alert("Username or Password incorrect!");
+        }
     }
     return (
         <div class="flex h-screen" style={screenStyle}>

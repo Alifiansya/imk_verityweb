@@ -2,9 +2,58 @@ import PialaImage from '../assets/images/signup_piala.png'
 import GoogleIcon from '../assets/images/google.png'
 import AppleIcon from '../assets/images/apple.png'
 import {NameForm, EmailForm, PasswordForm} from '../components/forms'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+function CheckUnameDupe(uname) {
+    let foundId = -1;
+    let isFound = false;
+    const UserData = JSON.parse(localStorage.getItem("userData"));
+    if (UserData != null) {
+        UserData.forEach((userObj, idx) => {
+            console.log(uname)
+            console.log(userObj);
+            console.log(userObj["uname"]);
+            if(userObj["uname"] == uname) {
+                isFound = true;
+                foundId = idx; 
+            }
+        });
+    }
+   return [isFound, foundId];
+}
 
 function Signup() {
+    let navigate = useNavigate();
+    const submitHandler = () => {
+        const uname = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+        const email = document.getElementById("email").value;
+        if (CheckUnameDupe(uname)[0]) {
+            alert("Username is not available!");
+        }
+        else if (uname == "" || email == "" || password == "") {
+            alert(uname == "" ? "Insert your username!" : email == "" ? "Insert your email address!" : "Insert your account password!")
+        }
+        else if (!document.getElementById("tos").checked) {
+            alert("Read and agree with the terms of services!");
+        }
+        else {
+            const newDataObj = {
+                "uname": uname,
+                "password": password,
+                "email": email
+            }
+            alert("Sign Up success!");
+            if(localStorage.getItem("userData") == null) {
+                localStorage.setItem("userData", JSON.stringify([]));
+            }
+            let dataPayload = JSON.parse(localStorage.getItem("userData"));
+            dataPayload.push(newDataObj);
+            localStorage.setItem("userData", JSON.stringify(dataPayload));
+            console.log(localStorage.getItem("userData"));
+            navigate("/");
+        }
+    }
     return (
         <div class="Login w-screen flex">
             <div class="grow flex justify-center items-center w-full">
@@ -19,7 +68,7 @@ function Signup() {
                             <label for="tos" class="ml-2 text-xs font-medium text-gray-900">I agree to the <a href='#'><u>terms & policy</u></a></label>
                         </div>
                     </div>
-                    <button type='submit' class="text-white text-base font-bold w-full py-2.5 hover:brightness-75" style={{"border-radius": "0.625rem", "background": "#4CAF50"}}>Signup</button>
+                    <button type='submit' onClick={submitHandler} class="text-white text-base font-bold w-full py-2.5 hover:brightness-75" style={{"border-radius": "0.625rem", "background": "#4CAF50"}}>Signup</button>
                     <div class="flex justify-center my-12 items-center">
                         <hr class="bg-weak-grey h-0.5 border-none rounded-sm opacity-20 w-full z-0"/>
                         <label class="px-1 text-xs z-0">Or</label>

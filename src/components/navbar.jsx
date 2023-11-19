@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 function NavBar() {
     const [accDrop, setAccDrop] = useState(false);
     return (
-    <div className="max-w-screen max-h-screen bg-[#FCFFEE]">
+    <div className="max-w-screen max-h-screen bg-[#FCFFEE] top-0 fixed w-full z-10">
         <nav style={{"border-radius": "0rem 0rem 1.875rem 1.875rem", "background": "linear-gradient(147deg, rgba(137, 170, 40, 0.75) 33.76%, rgba(221, 255, 0, 0.75) 74.59%)"}}>
             <div className="max-w-screen flex flex-wrap items-center justify-between mx-auto px-[2.06rem] py-[2.69rem]">
                 <SearchBar />
