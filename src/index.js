@@ -6,6 +6,7 @@ import Signup from './routes/signup';
 import Login from './routes/login';
 import Home from './routes/home';
 import Test from './routes/test';
+import Player from './routes/player'
 import reportWebVitals from './reportWebVitals';
 
 export function App() {
@@ -15,6 +16,7 @@ export function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/home/player" element={<Player/>}/>
           <Route path="/test" element={<Test />} />
        </Routes>
     </BrowserRouter>
