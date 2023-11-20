@@ -71,11 +71,11 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div id="playerContainer" className="grid lg:grid-cols-2 gap-6 md:grid-cols-1 px-8">
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" bpm="90" health='100' playtime="1 hours" visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" bpm="90" health='100' playtime="1 hours" visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" bpm="90" health='100' playtime="1 hours" visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" bpm="90" health='100' playtime="1 hours" visibility="true"/>
+            <div id="playerContainer" className="flex flex-wrap gap-8">
+                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={1} health='93' playtime={1} visibility="true"/>
+                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" PlayerId={2} health='86' playtime={2} visibility="true"/>
+                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={3} health='97' playtime={1} visibility="true"/>
+                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={4} health='85' playtime={3} visibility="true"/>
             </div>
         </div>
     </div>

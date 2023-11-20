@@ -1,7 +1,8 @@
 import Messi from '../assets/images/PlayerImg/Portrait/messi.jpg'
 import { useNavigate } from 'react-router-dom'
 
-export default function PlayerCard({name, gender, age, bpm, health, playtime = 1, visibility = true}) {
+export default function PlayerCard({name, gender, age, health, playtime = 1, visibility = true, playerId = 1}) {
+    const bpm = 90
     const navigate = useNavigate()
     const handleInfoButton = () => {
         navigate('/home/player')
@@ -14,7 +15,7 @@ export default function PlayerCard({name, gender, age, bpm, health, playtime = 1
         "background": "linear-gradient(180deg, #D5EE32 0%, rgba(136, 169, 40, 0.50) 100%)"
     }
     return (
-        <div className={`${visibility ? "visible" : "invisible"} p-[2.4rem] flex flex-col gap-3 justify-center`} style={cardStyle}>
+        <div className={`${visibility ? "visible" : "invisible"} p-[2.4rem] flex flex-col gap-3 justify-center mx-auto`} style={cardStyle}>
             <div id="top-sec" className="w-full flex">
                 <div className="w-32 h-32 shadow-2xl rounded-2xl">
                     <img src={Messi} className="object-cover object-top w-full h-full rounded-2xl"/>

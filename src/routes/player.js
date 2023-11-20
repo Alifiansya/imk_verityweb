@@ -1,6 +1,14 @@
 import NavBar from "../components/navbar";
 import PlayerBg from "../assets/images/playerbg.png"
+import {PlayerBpm} from "../assets/data/playerbpm"
+import { monthHealth, yearHealth } from "../assets/data/doughnutData";
 import Messi from "../assets/images/PlayerImg/NoBG/messi.png"
+import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(ArcElement, Tooltip);
+const average = array => array.reduce((a, b) => a + b) / array.length;
 
 function Player(){
     let firstName = 'L';
@@ -8,6 +16,8 @@ function Player(){
     let position = "Striker";
     let gender = "Male";
     let age = "36";
+    let id = 1
+    let bpm = PlayerBpm[`player${id}`]
     return (
         <div className="flex flex-col">
             <NavBar />
@@ -37,9 +47,122 @@ function Player(){
             <div className="rounded-xl bg-[#424242] flex p-2 px-10 text-2xl text-[#FCFFEE] font-semibold justify-center mx-auto -mt-8">
                 Play Time Average
             </div>
-            <div id="data-sec">
-                <div>
-                    Day
+            <div id="data-sec" className="flex flex-col mx-auto my-24">
+                <div id="day-data">
+                    <div id="" className="rounded-xl bg-[#424242] flex p-0.5 w-72 text-2xl text-[#FCFFEE] font-semibold justify-center mx-auto ">
+                        Day
+                    </div>
+                    <div className="flex gap-12 mx-auto flex-wrap justify-center my-12">
+                        
+                    </div>
+                </div>
+                <div id="week-data">
+                    <div className="rounded-xl bg-[#424242] flex p-0.5 w-72 text-2xl text-[#FCFFEE] font-semibold justify-center mx-auto ">
+                        Week
+                    </div>
+                    <div className="flex gap-12 mx-auto flex-wrap justify-center my-12">
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(40)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M52.4667 60.896C47.8163 64.3091 43.1599 66.7999 39.5 68.0162C27.9792 64.1877 6.58337 47.7293 6.58337 29.6252C6.58337 19.6266 14.6889 11.521 24.6875 11.521C30.8105 11.521 36.2237 14.5607 39.5 19.2133C42.7764 14.5607 48.1895 11.521 54.3125 11.521C64.3111 11.521 72.4167 19.6266 72.4167 29.6252C72.4167 32.4996 71.8774 35.3324 70.9238 38.08" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M44.4375 47.7293H51.0208L55.9583 41.146L60.8958 54.3127L65.7716 47.7293H72.4167" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} BPM`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(83)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M30.2422 2.46875C29.0145 2.46875 27.8371 2.95644 26.9691 3.82453C26.101 4.69261 25.6133 5.86999 25.6133 7.09766V25.6133H7.09766C5.86999 25.6133 4.69261 26.101 3.82453 26.9691C2.95644 27.8371 2.46875 29.0145 2.46875 30.2422V48.7578C2.46875 49.9855 2.95644 51.1629 3.82453 52.0309C4.69261 52.899 5.86999 53.3867 7.09766 53.3867H25.6133V71.9023C25.6133 73.13 26.101 74.3074 26.9691 75.1755C27.8371 76.0436 29.0145 76.5312 30.2422 76.5312H48.7578C49.9855 76.5312 51.1629 76.0436 52.0309 75.1755C52.899 74.3074 53.3867 73.13 53.3867 71.9023V53.3867H71.9023C73.13 53.3867 74.3074 52.899 75.1755 52.0309C76.0436 51.1629 76.5312 49.9855 76.5312 48.7578V30.2422C76.5312 29.0145 76.0436 27.8371 75.1755 26.9691C74.3074 26.101 73.13 25.6133 71.9023 25.6133H53.3867V7.09766C53.3867 5.86999 52.899 4.69261 52.0309 3.82453C51.1629 2.95644 49.9855 2.46875 48.7578 2.46875H30.2422Z" fill="#FF6464"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))}%`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(1)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <g clip-path="url(#clip0_350_186)">
+                                    <path d="M39.5 6.5835C57.6799 6.5835 72.4167 21.3203 72.4167 39.5002C72.4167 57.68 57.6799 72.4168 39.5 72.4168C21.3201 72.4168 6.58333 57.68 6.58333 39.5002C6.58333 21.3203 21.3201 6.5835 39.5 6.5835ZM39.5 19.7502C38.627 19.7502 37.7897 20.097 37.1724 20.7143C36.5551 21.3316 36.2083 22.1688 36.2083 23.0418V39.5002C36.2085 40.3731 36.5554 41.2102 37.1728 41.8274L47.0478 51.7024C47.6686 52.302 48.5001 52.6338 49.3632 52.6263C50.2262 52.6188 51.0518 52.2726 51.6621 51.6623C52.2724 51.052 52.6186 50.2264 52.6261 49.3633C52.6336 48.5003 52.3018 47.6688 51.7022 47.048L42.7917 38.1374V23.0418C42.7917 22.1688 42.4449 21.3316 41.8276 20.7143C41.2103 20.097 40.373 19.7502 39.5 19.7502Z" fill="#FF6464"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_350_186">
+                                        <rect width="79" height="79" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} hours`}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="month-data">
+                    <div className="rounded-xl bg-[#424242] flex p-0.5 w-72 text-2xl text-[#FCFFEE] font-semibold justify-center mx-auto ">
+                        Month
+                    </div>
+                    <div className="flex gap-12 mx-auto flex-wrap justify-center my-12">
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(40)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M52.4667 60.896C47.8163 64.3091 43.1599 66.7999 39.5 68.0162C27.9792 64.1877 6.58337 47.7293 6.58337 29.6252C6.58337 19.6266 14.6889 11.521 24.6875 11.521C30.8105 11.521 36.2237 14.5607 39.5 19.2133C42.7764 14.5607 48.1895 11.521 54.3125 11.521C64.3111 11.521 72.4167 19.6266 72.4167 29.6252C72.4167 32.4996 71.8774 35.3324 70.9238 38.08" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M44.4375 47.7293H51.0208L55.9583 41.146L60.8958 54.3127L65.7716 47.7293H72.4167" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} BPM`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(83)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M30.2422 2.46875C29.0145 2.46875 27.8371 2.95644 26.9691 3.82453C26.101 4.69261 25.6133 5.86999 25.6133 7.09766V25.6133H7.09766C5.86999 25.6133 4.69261 26.101 3.82453 26.9691C2.95644 27.8371 2.46875 29.0145 2.46875 30.2422V48.7578C2.46875 49.9855 2.95644 51.1629 3.82453 52.0309C4.69261 52.899 5.86999 53.3867 7.09766 53.3867H25.6133V71.9023C25.6133 73.13 26.101 74.3074 26.9691 75.1755C27.8371 76.0436 29.0145 76.5312 30.2422 76.5312H48.7578C49.9855 76.5312 51.1629 76.0436 52.0309 75.1755C52.899 74.3074 53.3867 73.13 53.3867 71.9023V53.3867H71.9023C73.13 53.3867 74.3074 52.899 75.1755 52.0309C76.0436 51.1629 76.5312 49.9855 76.5312 48.7578V30.2422C76.5312 29.0145 76.0436 27.8371 75.1755 26.9691C74.3074 26.101 73.13 25.6133 71.9023 25.6133H53.3867V7.09766C53.3867 5.86999 52.899 4.69261 52.0309 3.82453C51.1629 2.95644 49.9855 2.46875 48.7578 2.46875H30.2422Z" fill="#FF6464"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))}%`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(1)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <g clip-path="url(#clip0_350_186)">
+                                    <path d="M39.5 6.5835C57.6799 6.5835 72.4167 21.3203 72.4167 39.5002C72.4167 57.68 57.6799 72.4168 39.5 72.4168C21.3201 72.4168 6.58333 57.68 6.58333 39.5002C6.58333 21.3203 21.3201 6.5835 39.5 6.5835ZM39.5 19.7502C38.627 19.7502 37.7897 20.097 37.1724 20.7143C36.5551 21.3316 36.2083 22.1688 36.2083 23.0418V39.5002C36.2085 40.3731 36.5554 41.2102 37.1728 41.8274L47.0478 51.7024C47.6686 52.302 48.5001 52.6338 49.3632 52.6263C50.2262 52.6188 51.0518 52.2726 51.6621 51.6623C52.2724 51.052 52.6186 50.2264 52.6261 49.3633C52.6336 48.5003 52.3018 47.6688 51.7022 47.048L42.7917 38.1374V23.0418C42.7917 22.1688 42.4449 21.3316 41.8276 20.7143C41.2103 20.097 40.373 19.7502 39.5 19.7502Z" fill="#FF6464"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_350_186">
+                                        <rect width="79" height="79" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} hours`}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="year-data">
+                    <div className="rounded-xl bg-[#424242] flex p-0.5 w-72 text-2xl text-[#FCFFEE] font-semibold justify-center mx-auto ">
+                        Year
+                    </div>
+                    <div className="flex gap-12 mx-auto flex-wrap justify-center my-12">
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(40)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M52.4667 60.896C47.8163 64.3091 43.1599 66.7999 39.5 68.0162C27.9792 64.1877 6.58337 47.7293 6.58337 29.6252C6.58337 19.6266 14.6889 11.521 24.6875 11.521C30.8105 11.521 36.2237 14.5607 39.5 19.2133C42.7764 14.5607 48.1895 11.521 54.3125 11.521C64.3111 11.521 72.4167 19.6266 72.4167 29.6252C72.4167 32.4996 71.8774 35.3324 70.9238 38.08" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M44.4375 47.7293H51.0208L55.9583 41.146L60.8958 54.3127L65.7716 47.7293H72.4167" stroke="#FF6464" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} BPM`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(83)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <path d="M30.2422 2.46875C29.0145 2.46875 27.8371 2.95644 26.9691 3.82453C26.101 4.69261 25.6133 5.86999 25.6133 7.09766V25.6133H7.09766C5.86999 25.6133 4.69261 26.101 3.82453 26.9691C2.95644 27.8371 2.46875 29.0145 2.46875 30.2422V48.7578C2.46875 49.9855 2.95644 51.1629 3.82453 52.0309C4.69261 52.899 5.86999 53.3867 7.09766 53.3867H25.6133V71.9023C25.6133 73.13 26.101 74.3074 26.9691 75.1755C27.8371 76.0436 29.0145 76.5312 30.2422 76.5312H48.7578C49.9855 76.5312 51.1629 76.0436 52.0309 75.1755C52.899 74.3074 53.3867 73.13 53.3867 71.9023V53.3867H71.9023C73.13 53.3867 74.3074 52.899 75.1755 52.0309C76.0436 51.1629 76.5312 49.9855 76.5312 48.7578V30.2422C76.5312 29.0145 76.0436 27.8371 75.1755 26.9691C74.3074 26.101 73.13 25.6133 71.9023 25.6133H53.3867V7.09766C53.3867 5.86999 52.899 4.69261 52.0309 3.82453C51.1629 2.95644 49.9855 2.46875 48.7578 2.46875H30.2422Z" fill="#FF6464"/>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))}%`}</span>
+                        </div>
+                        <div className="w-80 h-80 bg-[#D5EE32] rounded-[1.25rem] p-10 flex flex-col justify-center items-center">
+                            <Doughnut data={monthHealth(1)} className="absolute"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 79 79" fill="none">
+                                <g clip-path="url(#clip0_350_186)">
+                                    <path d="M39.5 6.5835C57.6799 6.5835 72.4167 21.3203 72.4167 39.5002C72.4167 57.68 57.6799 72.4168 39.5 72.4168C21.3201 72.4168 6.58333 57.68 6.58333 39.5002C6.58333 21.3203 21.3201 6.5835 39.5 6.5835ZM39.5 19.7502C38.627 19.7502 37.7897 20.097 37.1724 20.7143C36.5551 21.3316 36.2083 22.1688 36.2083 23.0418V39.5002C36.2085 40.3731 36.5554 41.2102 37.1728 41.8274L47.0478 51.7024C47.6686 52.302 48.5001 52.6338 49.3632 52.6263C50.2262 52.6188 51.0518 52.2726 51.6621 51.6623C52.2724 51.052 52.6186 50.2264 52.6261 49.3633C52.6336 48.5003 52.3018 47.6688 51.7022 47.048L42.7917 38.1374V23.0418C42.7917 22.1688 42.4449 21.3316 41.8276 20.7143C41.2103 20.097 40.373 19.7502 39.5 19.7502Z" fill="#FF6464"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_350_186">
+                                        <rect width="79" height="79" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span className="text-[#FCFFEE] font-semibold text-2xl mt-2">{`${Math.round(average(bpm))} hours`}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
