@@ -1,11 +1,30 @@
 import Messi from '../assets/images/PlayerImg/Portrait/messi.jpg'
+import Ronaldo from '../assets/images/PlayerImg/Portrait/rona.jpg'
+import Benzema from '../assets/images/PlayerImg/Portrait/karim.jpg'
+import Ozil from '../assets/images/PlayerImg/Portrait/ozil.jpg'
+import Suarez from '../assets/images/PlayerImg/Portrait/suarez.jpg'
+import Beckham from '../assets/images/PlayerImg/Portrait/beckham.jpg'
+import Ramos from '../assets/images/PlayerImg/Portrait/ramos.jpg'
+import Puyol from '../assets/images/PlayerImg/Portrait/puyol.jpg'
+
 import { useNavigate } from 'react-router-dom'
 
-export default function PlayerCard({name, gender, age, health, playtime = 1, visibility = true, playerId = 1}) {
-    const bpm = 90
+export default function PlayerCard({name, gender, age, health, playtime = 1, position="Striker",visibility = true, playerId = 1, hrate=90}) {
+    const playerImg = [Messi,Ronaldo,Benzema,Ozil,Suarez,Beckham,Ramos,Puyol]
+    const bpm = hrate
     const navigate = useNavigate()
     const handleInfoButton = () => {
-        navigate('/home/player')
+        navigate('/home/player', {
+            state: {
+                "name": name,
+                "gender": gender,
+                "age": age,
+                "health": health,
+                "position": position,
+                "playtime": playtime,
+                "playerId": playerId
+            }
+        });
     }
     const cardStyle = {
         "width": "34.9375rem",
@@ -18,7 +37,7 @@ export default function PlayerCard({name, gender, age, health, playtime = 1, vis
         <div className={`${visibility ? "visible" : "invisible"} p-[2.4rem] flex flex-col gap-3 justify-center mx-auto`} style={cardStyle}>
             <div id="top-sec" className="w-full flex">
                 <div className="w-32 h-32 shadow-2xl rounded-2xl">
-                    <img src={Messi} className="object-cover object-top w-full h-full rounded-2xl"/>
+                    <img src={playerImg[playerId-1]} className="object-cover object-top w-full h-full rounded-2xl"/>
                 </div>
                 <div className="ms-4">
                     <h1 className="text-[2.25rem] font-semibold my-0.5">{`${name}`}</h1>

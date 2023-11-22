@@ -1,52 +1,10 @@
 import NavBar from "../components/navbar";
 import PlayerCard from "../components/playerCard";
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 
 function Home() {
-    const playerData = {
-        'player1': {
-            'hrate': '115',
-            'health': '84',
-            'playtime': '1'
-        },
-        'player2': {
-            'hrate': '140',
-            'health': '83',
-            'playtime': '1'
-        },
-        'player3': {
-            'hrate': '113',
-            'health': '91',
-            'playtime': '1'
-        },
-        'player4': {
-            'hrate': '116',
-            'health': '94',
-            'playtime': '1'
-        },
-        'player5': {
-            'hrate': '117',
-            'health': '76',
-            'playtime': '1'
-        },
-        'player6': {
-            'hrate': '115',
-            'health': '85',
-            'playtime': '1'
-        },
-        'player7': {
-            'hrate': '93',
-            'health': '83',
-            'playtime': '1'
-        },
-        'player8': {
-            'hrate': '92',
-            'health': '81',
-            'playtime': '1'
-        }
-    }
     const [filterDrop, setFilterDrop] = useState(false);
+    const [filterState, setFilterState] = useState(0);
     return (
     <div className="my-40">
         <NavBar/>
@@ -62,20 +20,27 @@ function Home() {
                     <div id="dropdown" className={`${filterDrop ? "visible" : "invisible"} z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-44 dark:bg-gray-700 absolute -mt-6`}>
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Player</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100" onClick={() => {setFilterState(0)}}>No Filter</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Substitute</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100" onClick={() => {setFilterState(1)}}>Player</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100" onClick={() => {setFilterState(2)}}>Substitute</a>
                         </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div id="playerContainer" className="flex flex-wrap gap-8">
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={1} health='93' playtime={1} visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" PlayerId={2} health='86' playtime={2} visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={3} health='97' playtime={1} visibility="true"/>
-                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={4} health='85' playtime={3} visibility="true"/>
+                <PlayerCard name="Lionnel Messi" gender="Male" age= "36" playerId={1} health={84} playtime={1} visibility={filterState == 1 || filterState == 0} hrate={115} position="Anchor"/>
+                <PlayerCard name="Cristiano Ronaldo" gender="Male" age= "38" playerId={2} health={83} playtime={2} visibility={filterState == 1 || filterState == 0} hrate={140} position="Pivot"/>
+                <PlayerCard name="Neymar Jr." gender="Male" age= "31" playerId={3} health={91} playtime={1} visibility={filterState == 2 || filterState == 0} hrate={113} position="Anchor"/>
+                <PlayerCard name="Mesut Ozil" gender="Male" age= "35" playerId={4} health={94} playtime={3} visibility={filterState == 2 || filterState == 0} hrate={116} position="Keeper"/>
+                <PlayerCard name="Luiz Suarez" gender="Male" age= "36" playerId={5} health={76} playtime={2} visibility={filterState == 1 || filterState == 0} hrate={117} position="Flank"/>
+                <PlayerCard name="David Beckham" gender="Male" age= "48" playerId={6} health={85} playtime={5} visibility={filterState == 1 || filterState == 0} hrate={115} position="Flank"/>
+                <PlayerCard name="Sergio Ramos" gender="Male" age= "37" playerId={7} health={93} playtime={1} visibility={filterState == 2 || filterState == 0 }hrate={93} position="Keeper"/>
+                <PlayerCard name="Carles Puyol`" gender="Male" age= "45" playerId={8} health={92} playtime={3} visibility={filterState == 1 || filterState == 0} hrate={92} position="Flank"/>
             </div>
         </div>
     </div>
